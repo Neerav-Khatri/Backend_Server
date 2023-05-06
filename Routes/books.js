@@ -3,7 +3,7 @@ const bookRouter = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { bookModel } = require("../Model/Book");
-const { auth } = require("../Middleware/Auth");
+const { auth } = require("../MiddleWare/Auth");
 
 // POST Request
 
