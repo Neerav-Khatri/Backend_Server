@@ -1,18 +1,18 @@
-const jwt=require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 
-const auth=(req,res,next)=>{
-    const token=req.headers.authorization.split(" ")[1]
-    if(token){
-        const decoded=jwt.verify(token,"Learn_Auth")
-        if(decoded){
-            req.body.userID=decoded.userID
-            next()
-        } else {
-            res.status(400).send({"msg":"Please Login First!"})
-        }
+const auth = (req, res, next) => {
+    const token = req.headers?.authorization?.split(" ")[1];
+    if (token){
+        jwt.verify(token, "Masai_Library", async(err, decoded) => {
+            if (decoded){
+                next();
+            } else {
+                res.status(400).send({ "message" : "Access denied, Kindly login first" });
+            }
+        });
     } else {
-        res.status(400).send({"msg":"Please Login First!"})
+        res.status(400).send({ "message" : "Access denied, Kindly login first" });
     }
-}
+};
 
-module.exports={ auth }
+module.exports = { auth };

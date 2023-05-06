@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-require("dotenv").config();
 
-const connetDB = mongoose.connect(process.env.MONGO_DB_API);
+const connection = mongoose.connect(`mongodb+srv://neeravkhatri:neeravkhatri@cluster0.dcucben.mongodb.net/Masai_Library?retryWrites=true&w=majority`);
 
-module.exports = { connetDB };
+module.exports = { connection };
